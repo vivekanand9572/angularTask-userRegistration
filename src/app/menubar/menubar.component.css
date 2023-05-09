@@ -1,0 +1,15 @@
+.navbar a {
+    color: #ffffff;
+  }
+  .nav-item a {
+    border-top: 5px solid transparent;
+  }
+  .nav-item.active a,
+  .nav-item a:hover {
+    border-top: 5px solid yellow;
+  }
+  
+  .navbar {
+    background:lightyellow;
+  }
+  

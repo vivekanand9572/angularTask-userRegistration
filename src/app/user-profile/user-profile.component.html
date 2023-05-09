@@ -1,0 +1,34 @@
+<div class="container ">
+    <div class="row ">
+        <div class="col-md-12 container">
+            <h5 class="text-primary">Profile</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 ">
+            <div><img src="{{user?.profileImage}}" alt="" class="photo-graph">
+            </div>
+            <div class="d-flex">
+                <input type="file" id="photoFile" class="d-none" />
+                <button for="photoFile" class="btn btn-sm btn-warning mt-3">Edit Photo</button>
+                <button class="btn btn-sm btn-warning mt-3 ml-2" (click)="onEdit()">Edit Profile</button>
+            </div>
+        </div>
+        <div class="col-7">
+            
+
+            <p *ngIf="user?.firstName">
+                I'm <span class="font-bold text-primary text-capitalize">{{user.firstName}} {{user.lastName}}</span>and
+                Im above {{user.age}} years and you can send your emails to
+                <a href="mailto:{{user.email}}" class="text-primary">{{user.email}}</a>.
+                I live in the {{user.state}}of {{ user.country }}. I like to {{ user.interests }}. And please send me
+                newsletter. Please reach out to me on
+                <a class="text-primary" href="tel:{{ user.p_number }}">{{ user.p_number }}</a>.
+
+            </p>
+            <button class="btn btn-success t-3">I Agree</button>
+
+        </div>
+
+    </div>
+</div>

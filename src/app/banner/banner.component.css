@@ -1,0 +1,12 @@
+.homebanner{
+    background-image: url('../../assets/images/pexels-photo-3997905.webp');
+    background-repeat:  no-repeat;
+    background-size: 100% 100%;
+}
+.navbar-brand{
+    color:yellow;
+}
+.nav-link{
+    color: yellow;
+    
+}

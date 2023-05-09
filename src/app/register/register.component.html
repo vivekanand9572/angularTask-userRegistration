@@ -1,0 +1,152 @@
+<div class="modal-header">
+    <h5 class="modal-title">Register</h5>
+    <button class="btn-close close pull-right" type="button" aria-label="Close" (click)="bsModalRef.hide()"><span
+            class="visually-hidden">&times;</span></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="registrationForm">
+        <div class="form-row ">
+            <div class="col-sm-4 ">
+                <img [src]="url" alt="" class="photo-graph" />
+                <div>
+                    <input type="file" style="display: none;" id="img" accept="image/*" formControlName="profileImage"
+                        (change)="onFileSelected($event)" class="form-control form-group" />
+                    <label class="text-primary text-sm" for="img">upload your photo</label>
+                </div>
+            </div>
+            <div class="col-sm-8 ">
+                <div class="row form-group ">
+                    <div class="col-sm-6 ">
+                        <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" />
+
+                        <div *ngIf="registrationForm.get('firstName')?.invalid && (registrationForm.get('firstName')?.dirty
+                        || registrationForm.get('firstName')?.touched)" class="text-danger">
+
+                            * is required
+                        </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email"
+                        formControlName="email">
+                        <div *ngIf="registrationForm.get('email')?.invalid && (registrationForm.get('email')?.dirty
+                        || registrationForm.get('email')?.touched)" class="text-danger">
+
+                            * is required
+                        </div>    
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" id="phone-number" placeholder="(541) 753-254"
+                        formControlName="p_number" />
+                        <div *ngIf="registrationForm.get('p_number')?.invalid && (registrationForm.get('p_number')?.dirty
+                        || registrationForm.get('p_number')?.touched)" class="text-danger">
+
+                            * is required
+                        </div> 
+                </div>
+                <div class="form-group">
+                    <ngx-slider [(value)]="value" [options]="options" class="form-control" formControlName="age">
+                    </ngx-slider>
+                </div>
+                <div class="form-group">
+                    <select id="inputState" class="form-control" formControlName="state">
+
+                        <option value="maharashtra"> Maharashtra</option>
+                        <option value="Goa"> Goa</option>
+                        <option value="panji"> Panji</option>
+                        <option value="maharashtra"> Maharashtra</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <select id="inputCountry" class="form-control" formControlName="country">
+
+                        <option value="India"> India</option>
+                        <option value="Usa"> USA</option>
+                        <option value="africa"> Africa</option>
+                        <option value="China"> China</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <select id="addressType" class="form-control mb-3" (change)="onChange($event)"
+                        formControlName="addressType">
+                        <option selected>Address Type</option>
+                        <option value="home">Home</option>
+                        <option value="company">Company</option>
+                    </select>
+                </div>
+
+                <div class="form-group" *ngIf="registrationForm.get('addressType')?.value === 'home'">
+                    <label>Home Address 1:</label>
+                    <input class="form-control" type="text" formControlName="address1" />
+                    <div *ngIf="
+                        registrationForm.get('address1')?.invalid &&
+                        (registrationForm.get('address1')?.dirty || registrationForm.get('address1')?.touched)
+                      ">
+                        <div *ngIf="registrationForm.get('address1')?.errors?.['required']">Address 1 is required.</div>
+                    </div>
+                    <br />
+                    <label>Home Address 2:</label>
+                    <input class="form-control" type="text" formControlName="address2" />
+                    <div *ngIf="
+                        registrationForm.get('address2')?.invalid &&
+                        (registrationForm.get('address2')?.dirty || registrationForm.get('address2')?.touched)
+                      ">
+                        <div *ngIf="registrationForm.get('address2')?.errors?.['required']">Address 2 is required.</div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="registrationForm.get('addressType')?.value === 'company'">
+                    <label>Company Address 1:</label>
+                    <input class="form-control" type="text" formControlName="companyAddress1" />
+                    <div *ngIf="
+                        registrationForm.get('companyAddress1')?.invalid &&
+                        (registrationForm.get('companyAddress1')?.dirty || registrationForm.get('companyAddress1')?.touched)
+                      ">
+                        <div *ngIf="registrationForm.get('companyAddress1')?.errors?.['required']">Address 1 is
+                            required.</div>
+                    </div>
+
+                    <label>Company Address 2:</label>
+                    <input class="form-control" type="text" formControlName="companyAddress2" />
+                    <div *ngIf="
+                        registrationForm.get('companyAddress2')?.invalid &&
+                        (registrationForm.get('companyAddress2')?.dirty || registrationForm.get('companyAddress2')?.touched)
+                      ">
+                        <div *ngIf="registrationForm.get('companyAddress2')?.errors?.['required']">Address 2 is
+                            required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <tag-input formControlName="interests" [placeholder]="'Add interests...'"
+                        [secondaryPlaceholder]="'Enter Interests'" [onlyFromAutocomplete]="false" [addOnBlur]="true"
+                        [maxItems]="10" [validators]="[]" [errorMessages]="{}">
+                    </tag-input>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="Newsletter" formControlName="newsletter" />
+                        <div *ngIf="registrationForm.get('newsletter')?.invalid && (registrationForm.get('newsletter')?.dirty
+                        || registrationForm.get('newsletter')?.touched)" class="text-danger">
+
+                            * is required
+                        </div> 
+                        <label class="form-check-label" for="Newsletter"> subscribe to newsletter </label>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Cancel</button>
+    <button type="button" class="btn btn-primary" [disabled]="!registrationForm.valid" (click)="addRegister()">
+        Submit
+    </button>
+</div>
